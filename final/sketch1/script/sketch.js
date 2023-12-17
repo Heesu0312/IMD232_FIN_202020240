@@ -2,7 +2,7 @@ let balloons = [];
 let particles = [];
 
 function setup() {
-  setCanvasContainer('canvas', 3, 2, true);
+  createCanvas(windowWidth, windowHeight);
 
   for (let i = 0; i < 10; i++) {
     balloons.push(new Balloon(random(width), height));
