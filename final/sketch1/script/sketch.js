@@ -86,7 +86,7 @@ class Balloon {
       noStroke();
       ellipse(this.x, this.y, this.radiusX * 2, this.radiusY * 2); // 타원 모양으로 변경
 
-      stroke(255); // 흰색 선
+      stroke(255);
       strokeWeight(1);
       line(this.x, this.y + this.radiusY, this.x, this.y + this.radiusY * 2);
 
@@ -101,7 +101,7 @@ class Balloon {
         this.y + this.radiusY * 1 - this.radiusY
       );
 
-      stroke(255); // 흰색 선
+      stroke(255);
       strokeWeight(1);
       line(
         this.x,

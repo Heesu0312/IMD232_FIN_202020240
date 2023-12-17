@@ -10,7 +10,7 @@ function setup() {
 }
 
 function draw() {
-  background('#87CEEB'); // 하늘색 배경
+  background('#87CEEB');
 
   for (let star of stars) {
     star.update();
@@ -23,7 +23,7 @@ function mousePressed() {
   for (let i = stars.length - 1; i >= 0; i--) {
     let distance = dist(mouseX, mouseY, stars[i].x, stars[i].y);
     if (distance < stars[i].interactionRadius) {
-      stars.splice(i, 1); // 클릭한 별 제거
+      stars.splice(i, 1);
     }
   }
 }
@@ -43,7 +43,7 @@ class Star {
     this.twinkleSpeed = random(0.01, 0.1);
     this.angle = random(TWO_PI);
     this.twinkle = random(0, PI / 8);
-    this.interactionRadius = 50; // 마우스와 상호작용하는 범위
+    this.interactionRadius = 50;
   }
 
   disappear() {
@@ -77,9 +77,9 @@ class Star {
   interact() {
     let distance = dist(mouseX, mouseY, this.x, this.y);
     if (distance < this.interactionRadius) {
-      this.size = lerp(this.size, this.baseSize * 1.5, 0.1); // 마우스 근처에서 크기를 키우기
+      this.size = lerp(this.size, this.baseSize * 1.5, 0.1);
     } else {
-      this.size = lerp(this.size, this.baseSize, 0.1); // 마우스 멀어질 때 원래 크기로 돌아오기
+      this.size = lerp(this.size, this.baseSize, 0.1);
     }
   }
 }
