@@ -10,6 +10,22 @@
       type="text/css" />
     <link rel="stylesheet" href="../style.css" />
 
+    <style>
+      /* Flexbox를 사용하여 이미지를 가로로 배열 */
+      .container {
+        display: flex;
+        justify-content: space-around; /* 이미지 간 간격을 균등하게 설정 */
+        align-items: center; /* 수직 중앙 정렬 */
+      }
+
+      /* 이미지에 공통된 스타일 적용 */
+      .container a img {
+        width: 100%; /* 부모 요소의 100% 너비로 설정 */
+        height: auto; /* 비율에 맞게 자동으로 높이 조절 */
+        max-width: 200px; /* 최대 너비를 200px로 설정 (원하는 크기로 조절) */
+        margin: 10px; /* 이미지 주위에 10px의 여백 추가 */
+      }
+    </style>
     <script src="https://cdn.jsdelivr.net/npm/p5@1.9.0/lib/p5.js"></script>
     <script src="../p5Util.js" defer></script>
     <script src="./script/sketch.js" defer></script>
