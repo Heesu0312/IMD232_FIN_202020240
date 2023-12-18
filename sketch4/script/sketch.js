@@ -13,7 +13,7 @@ function setup() {
 
 function draw() {
   background('#87CEEB');
-
+  //GPT 도움을 받았습니다요
   for (let i = 0; i < stars.length; i++) {
     for (let j = i + 1; j < stars.length; j++) {
       let distance = dist(stars[i].x, stars[i].y, stars[j].x, stars[j].y);
