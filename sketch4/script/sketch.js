@@ -1,6 +1,6 @@
 let stars = [];
 const numStars = 50;
-const lineThreshold = 150; // 연결선을 그릴 거리 임계값
+const lineThreshold = 150;
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
@@ -18,7 +18,6 @@ function draw() {
     for (let j = i + 1; j < stars.length; j++) {
       let distance = dist(stars[i].x, stars[i].y, stars[j].x, stars[j].y);
 
-      // 연결선 그리기
       if (distance < lineThreshold) {
         stroke(255, 150);
         line(stars[i].x, stars[i].y, stars[j].x, stars[j].y);
@@ -32,12 +31,10 @@ function draw() {
     star.interact();
   }
 
-  // 새로운 별 생성
   if (random() > 0.98) {
     stars.push(new Star(random(width), random(height)));
   }
 
-  // 클릭한 별 제거
   stars = stars.filter((star) => !star.shouldRemove());
 }
 
