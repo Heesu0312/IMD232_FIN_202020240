@@ -46,7 +46,7 @@ function mousePressed() {
     }
   }
 }
-
+//GPT의 도움을 받았습니다요
 class Star {
   constructor(x, y) {
     this.x = x;
@@ -67,7 +67,7 @@ class Star {
     this.explosionSize = 10;
     this.fadeOutSpeed = 4;
   }
-
+  //GPT의 도움을 받았습니다요
   explode() {
     this.exploding = true;
   }

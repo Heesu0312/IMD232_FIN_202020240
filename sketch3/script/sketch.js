@@ -47,7 +47,7 @@ class Marshmallow {
     fill(this.color);
     ellipse(this.x, this.y, this.size, this.size);
   }
-
+  //GPT의 도움을 받았습니다요
   isOffscreen() {
     return (
       this.x < 0 ||

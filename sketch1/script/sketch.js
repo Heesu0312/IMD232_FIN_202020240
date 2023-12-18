@@ -35,7 +35,7 @@ function draw() {
     }
   }
 }
-
+//GPT의 도움을 받았습니다요
 function mousePressed() {
   for (let i = balloons.length - 1; i >= 0; i--) {
     let d = dist(mouseX, mouseY, balloons[i].x, balloons[i].y);
@@ -127,7 +127,7 @@ class Balloon {
     return this.bursting;
   }
 }
-
+//GPT의 도움을 받았습니다요
 class Particle {
   constructor(x, y, color) {
     this.x = x;

@@ -18,7 +18,7 @@ function draw() {
     seed.display();
   }
 }
-
+//GPT의 도움을 받았습니다요
 class DandelionSeed {
   constructor(x, y) {
     this.x = x;
@@ -29,7 +29,7 @@ class DandelionSeed {
     this.speed = random(0.5, 2);
     this.angle = random(TWO_PI);
   }
-
+  //GPT의 도움을 받았습니다요
   move(force) {
     let angleToMouse = atan2(mouseY - this.y, mouseX - this.x);
     this.x += cos(angleToMouse) * force * this.speed;
