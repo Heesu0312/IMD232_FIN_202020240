@@ -1,10 +1,12 @@
 let stars = [];
+const numStars = 50;
+const lineThreshold = 150; // 연결선을 그릴 거리 임계값
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
   noStroke();
 
-  for (let i = 0; i < 30; i++) {
+  for (let i = 0; i < numStars; i++) {
     stars.push(new Star(random(width), random(height)));
   }
 }
@@ -12,18 +14,38 @@ function setup() {
 function draw() {
   background('#87CEEB');
 
+  for (let i = 0; i < stars.length; i++) {
+    for (let j = i + 1; j < stars.length; j++) {
+      let distance = dist(stars[i].x, stars[i].y, stars[j].x, stars[j].y);
+
+      // 연결선 그리기
+      if (distance < lineThreshold) {
+        stroke(255, 150);
+        line(stars[i].x, stars[i].y, stars[j].x, stars[j].y);
+      }
+    }
+  }
+
   for (let star of stars) {
     star.update();
     star.display();
     star.interact();
   }
+
+  // 새로운 별 생성
+  if (random() > 0.98) {
+    stars.push(new Star(random(width), random(height)));
+  }
+
+  // 클릭한 별 제거
+  stars = stars.filter((star) => !star.shouldRemove());
 }
 
 function mousePressed() {
   for (let i = stars.length - 1; i >= 0; i--) {
     let distance = dist(mouseX, mouseY, stars[i].x, stars[i].y);
     if (distance < stars[i].interactionRadius) {
-      stars.splice(i, 1);
+      stars[i].explode();
     }
   }
 }
@@ -44,15 +66,27 @@ class Star {
     this.angle = random(TWO_PI);
     this.twinkle = random(0, PI / 8);
     this.interactionRadius = 50;
+    this.exploding = false;
+    this.explosionSize = 10;
+    this.fadeOutSpeed = 4;
   }
 
-  disappear() {
-    this.color.levels[3] = lerp(this.color.levels[3], 0, 0.1);
+  explode() {
+    this.exploding = true;
+  }
+
+  shouldRemove() {
+    return this.exploding && this.explosionSize > 100;
   }
 
   update() {
     this.angle += this.twinkleSpeed;
     this.twinkle = (sin(this.angle) * PI) / 8;
+
+    if (this.exploding) {
+      this.explosionSize *= 1.1;
+      this.color.levels[3] -= this.fadeOutSpeed;
+    }
   }
 
   display() {
@@ -72,6 +106,16 @@ class Star {
       ellipse(x, y, this.size * 2);
     }
     pop();
+
+    if (this.exploding) {
+      fill(
+        this.color.levels[0],
+        this.color.levels[1],
+        this.color.levels[2],
+        this.color.levels[3] * 0.5
+      );
+      ellipse(this.x, this.y, this.explosionSize);
+    }
   }
 
   interact() {
